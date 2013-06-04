@@ -3,7 +3,10 @@ require "spec_helper"
 describe ImageFile do
 
   describe ".new" do
-    it "should return an instance of a "
+    it "should require a single argument"
+    it "should return an ImageFile object"
+    it "should raise an error if filepath is not valid"
+    it "should raise an error if filepath does not represent a valid image file"
   end
 
 #TODO: handle files other than pngs!!!!
@@ -13,6 +16,24 @@ describe ImageFile do
     before(:all) do
       @img_rocket = ImageFile.new 'spec/samples/16px_rocket.png'
       @img_bomb = ImageFile.new 'spec/samples/64px_bomb.png'
+      @img_gif = nil
+      @img_jpg = nil
+      @img_svg = nil
+    end
+
+    describe "#filetype" do
+      it "should return image/png for PNG files" do
+        @img_rocket.filetype.should eq('image/png')
+      end
+      it "should return image/gif for GIF files" do
+        @img_gif.filetype.should eq('image/gif')
+      end
+      it "should return image/jpeg for JPG files" do
+        @img_jpg.filetype.should eq('image/jpeg')
+      end
+      it "should return image/svg+xml for SVG files" do
+        @img_svg.filetype.should eq('image/svg+xml')
+      end
     end
 
     describe "#as_img_tag" do
