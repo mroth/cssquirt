@@ -6,6 +6,11 @@ module CSSquirt
     # def initialize
     # end
 
+    # Publc: Makes a image file into an embedded img tag
+    def self.as_img_tag(file_path)
+      "<img src='#{self.encode_file(file_path)}' />"
+    end
+
     # Public: Makes a file into an CSS background image rule
     def self.as_css_background(file_path)
       "background: url(#{self.encode_file(file_path)}) no-repeat;"

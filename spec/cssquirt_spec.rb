@@ -11,6 +11,12 @@ describe CSSquirter do
     it "should return an instance of a "
   end
 
+  describe ".as_img_tag" do
+    it "should return the encoded image as an image tag" do
+      CSSquirter.as_img_tag(@img_rocket).should eq("<img src='#{CSSquirter.encode_file(@img_rocket)}' />")
+    end
+  end
+
   describe ".as_css_background" do
     it "should return the encoded image as a CSS background rule" do
       CSSquirter.as_css_background(@img_rocket).should eq("background: url(#{CSSquirter.encode_file(@img_rocket)}) no-repeat;")
