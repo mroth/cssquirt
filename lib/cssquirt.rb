@@ -1,5 +1,5 @@
 require "cssquirt/version"
 
-module Cssquirt
   # Your code goes here...
+module CSSquirt
 end
