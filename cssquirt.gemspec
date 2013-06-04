@@ -5,7 +5,7 @@ require 'cssquirt/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cssquirt"
-  spec.version       = Cssquirt::VERSION
+  spec.version       = CSSquirt::VERSION
   spec.authors       = ["Matthew Rothenberg"]
   spec.email         = ["mrothenberg@gmail.com"]
   spec.description   = %q{TODO: Write a gem description}
