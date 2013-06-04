@@ -6,6 +6,11 @@ module CSSquirt
     # def initialize
     # end
 
+    # Public: Makes a file into an CSS background image rule
+    def self.as_css_background(file_path)
+      "background: url(#{self.encode_file(file_path)}) no-repeat;"
+    end
+
     # Public: Encodes a file into a CSS string representation of it
     def self.encode_file(file_path)
       prefix = "data:image/png;base64,"

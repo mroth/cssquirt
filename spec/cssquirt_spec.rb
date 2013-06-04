@@ -11,6 +11,12 @@ describe CSSquirter do
     it "should return an instance of a "
   end
 
+  describe ".as_css_background" do
+    it "should return the encoded image as a CSS background rule" do
+      CSSquirter.as_css_background(@img_rocket).should eq("background: url(#{CSSquirter.encode_file(@img_rocket)}) no-repeat;")
+    end
+  end
+
   describe ".encode_file" do
     it "should return the base64 string wrapped in proper CSS format" do
       prefix = "data:image/png;base64,"
