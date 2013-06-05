@@ -78,7 +78,7 @@ module CSSquirt
     #
     # Returns the Base64 encoded String.
     def raw_encode()
-      return Base64.encode64(File.read @file_path).gsub('\n','') if RUBY_VERSION < "1.9.0"
+      return Base64.encode64(File.read @file_path).delete("\n") if RUBY_VERSION < "1.9.0"
       Base64.strict_encode64(File.read @file_path)
     end
 
