@@ -6,11 +6,13 @@ module CSSquirt
     #
     # file_path - A String representing the relative path to an image file.
     #
-    # TODO Raises *** if the file cannot be found.
-    # TODO Raises *** if the file is not a valid image file.
-    # TODO Raises *** if the file is larger than the maximum size that can be encoded as a Data URI (default: 32Kb)
+    # Raises IOError if the file cannot be found.
+    # Raises TypeError if the file is not a valid image file.
+    # Raises RangeError if the file is larger than the maximum size that can be
+    #   encoded as a Data URI (default: 32 kilobytes).
     def initialize(file_path)
       @file_path = file_path
+      raise IOError, "No file found at path #{file_path}" unless File.exist? file_path
     end
 
     # Public: Returns the MIME type for the file.

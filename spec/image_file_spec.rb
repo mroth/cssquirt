@@ -3,10 +3,18 @@ require "spec_helper"
 describe ImageFile do
 
   describe ".new" do
-    it "should require a single argument"
-    it "should return an ImageFile object"
-    it "should raise an error if filepath is not valid"
-    it "should raise an error if filepath does not represent a valid image file"
+    it "should return an ImageFile object" do
+      ImageFile.new('spec/samples/example.gif').should be_kind_of(ImageFile)
+    end
+    it "should raise an error if filepath is not valid" do
+      lambda { ImageFile.new('spec/samples/doesnt_exist.lol') }.should raise_error(IOError)
+    end
+    it "should raise an error if filepath does not represent a valid image file" do
+      lambda { ImageFile.new('spec/samples/example.mp3') }.should raise_error(TypeError)
+    end
+    it "should raise an error if file is above 32KB" do
+      lambda { ImageFile.new('spec/samples/toobig.gif') }.should raise_error(RangeError)
+    end
   end
 
 #TODO: handle files other than pngs!!!!
@@ -66,7 +74,6 @@ describe ImageFile do
       it "should properly encode the file" do
         @img_png.raw_encode.should eq("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAACIlBMVEUAAAASERMUExQXFhYmJSgnJilhYGZ9AABCQEWLAAAuLC87OT3D2voeHR4mIiOdRQAmISLnYgBgAgKDAACAAACMAAB7AQCBAAAFBAU2NTk/PkI3NToAAAAzMTVVU1h1dHyMjJVqaXA+PEEAAAAwLjFQTlN9e4OpqbJ/fYY8Oj8aGRs5NztlZGpraXAaGRs8Oj50c3qOi5VTUVd8AAB8AABeAAA8LzJ0dHxubHM6ODyHAACUAACPAABQT1R+AACVAACnAABgZG4zMTSAAACOAACTAABqdII9PkV+AAByAABuBwBWNTRqdYRAREsUDAiRQwC3SAGSSzlANjsUEhCxZwDYaQFdAACJTgDGlQBiMR1PKypjEBGPAACjagDUsQCxaQC7SQFwCgB5AACfZwC/lgDSsQDGlgC0ZwCVQQByAACOAACWAACVXQCfZwCMTgCAAACAAADJydPFxM+fnqe/v8na2uXa2eSwrbm0tb9zdHhWVliKiY/CwMzDxdKrrbhRUVFlZWRNTU6al6FbEBFnYmi4usbJzNm7u8hoaGtKSkpcW1+BgYyGAQFZPUGipK/Dw9DItMDGws+trLeNi5OMjptiEBF2dHy4tcHXbXS+MTWwo66qqLOXmqeXipPcVFm8Bwd0OT2cmqSSlKLVMTbAAgJnIyZzcXmFiJRjZHDpHQi+AABdEhVUUFVlYmlaP0RbERLvWwB1GQOGAgLjmwCiWgCnAABpx48CAAAAcXRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFTATAh9cnc7SMQEnh9n7zRYIZNudCYT2+1sVYGmU9tgfFKH9hxqk/toocbvY9mULBzLZ+IUICoTylAlc9msNtfHZ/vwt4faFMhRG5OK1WwoIuqQaRQ1yG1EyGzIAAACzSURBVBgZRcExSgNhEIbh752d2d+NBxCsrARBBAuvkIhYCtp7Km8gAYONqawUscwBgqZPCkURxMrZzUKeB22wQ1LPdllTp9ojnTHF1fJ9GJHiw5XiAE5JD7F0lUPSkFbBvDmGEb14HvgJnNO7i+0fD2hYG9cvJouIaencl2Lfstd64+lLcgsu6PjjpyQfcvVXbuFy/I6S1XU1mJSyrBZHKHFNbzZfKVnT/G7dTBYRbyu1/gH1JiFHBs2I5wAAAABJRU5ErkJggg==")
       end
-      it "should raise an error if file is above 32KB"
     end
   end
 end
