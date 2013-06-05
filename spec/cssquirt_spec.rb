@@ -1,5 +1,5 @@
 require "spec_helper"
 
-describe CSSquirter do
+describe CSSquirt do
 
 end
