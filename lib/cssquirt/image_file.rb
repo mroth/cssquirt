@@ -15,15 +15,15 @@ module CSSquirt
     #   encoded as a Data URI (default: 32 kilobytes).
     def initialize(file_path)
       @file_path = file_path
-      raise IOError, "No file found at path #{file_path}" unless File.exist? file_path
+      raise IOError, "No file found at #{file_path}!" unless File.exist? file_path
 
       unless self.valid_image_format?
-        raise TypeError, "File type #{self.filetype} not a supported image format"
+        raise TypeError, "File #{file_path} reports type #{self.filetype} which is not a supported image format."
       end
 
       file_size = File.size(@file_path)
       if file_size > MAX_FILE_SIZE
-        raise RangeError, "File is too big - #{file_size} greater than #{MAX_FILE_SIZE}"
+        raise RangeError, "File #{file_path} is too big - #{file_size} greater than #{MAX_FILE_SIZE}."
       end
     end
 

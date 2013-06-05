@@ -56,6 +56,30 @@ Example from an IRB session:
     => nil
 
 #### Working on groups of files
+Use `CSSquirt::FileList` which just extends the goodness of a Rake::FileList and adds some batch processing.  The batch processing is smart enough to report errors to you on specific files via `STDERR` but will just omit those files from the final output.
+
+    >> filez=CSSquirt::ImageFileList.new('samples/*')
+    => ["samples/16px_rocket.png", "samples/64px_bomb.png", "samples/example.gif", "samples/example.jpg", "samples/example.mp3", "samples/example.svg", "samples/toobig.gif"]
+
+    >> filez.exclude('samples/*.png')
+    => ["samples/example.gif", "samples/example.jpg", "samples/example.mp3", "samples/example.svg", "samples/toobig.gif"]
+
+    >> doc = filez.to_css
+    WARNING: skipped file - File samples/example.mp3 reports type application/octet-stream which is not a supported image format.
+    WARNING: skipped file - File samples/toobig.gif is too big - 104710 greater than 32768.
+
+    >> puts doc
+    /* Generated with CSSquirt! (http://github.com/mroth/cssquirt/) */
+    .example_gif {
+      background: url(data:image/gif;base64,R0lGODlhN[snip...]) no-repeat;
+    }
+    .example_jpg {
+      background: url(data:image/jpeg;base64,/9j/4AAQS[snip...]) no-repeat;
+    }
+    .example_svg {
+      background: url(data:image/svg+xml;base64,PD94bWwgdmV[snip...]) no-repeat;
+    }
+    => nil
 
 ### From the command line
 Coming soon!
