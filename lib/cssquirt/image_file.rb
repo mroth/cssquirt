@@ -6,6 +6,10 @@ module CSSquirt
       @file_path = file_path
     end
 
+    def filetype
+      `file --mime-type -b #{@file_path}`.chomp
+    end
+
     def as_img_tag()
       "<img src='#{self.encode}' />"
     end
