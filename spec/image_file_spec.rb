@@ -14,16 +14,16 @@ describe ImageFile do
 
   context "instance methods" do
     before(:all) do
-      @img_rocket = ImageFile.new 'spec/samples/16px_rocket.png'
-      @img_bomb = ImageFile.new 'spec/samples/64px_bomb.png'
-      @img_gif = nil
-      @img_jpg = nil
-      @img_svg = nil
+      @img_png = ImageFile.new 'spec/samples/16px_rocket.png'
+      @img_png2 = ImageFile.new 'spec/samples/64px_bomb.png'
+      @img_gif = ImageFile.new 'spec/samples/example.gif'
+      @img_jpg = ImageFile.new 'spec/samples/example.jpg'
+      @img_svg = ImageFile.new 'spec/samples/example.svg'
     end
 
     describe "#filetype" do
       it "should return image/png for PNG files" do
-        @img_rocket.filetype.should eq('image/png')
+        @img_png.filetype.should eq('image/png')
       end
       it "should return image/gif for GIF files" do
         @img_gif.filetype.should eq('image/gif')
@@ -38,7 +38,7 @@ describe ImageFile do
 
     describe "#as_img_tag" do
       it "should return the encoded image as an image tag" do
-        @img_rocket.as_img_tag.should eq("<img src='#{@img_rocket.encode}' />")
+        @img_png.as_img_tag.should eq("<img src='#{@img_png.encode}' />")
       end
     end
 
@@ -50,7 +50,7 @@ describe ImageFile do
 
     describe "#as_css_background" do
       it "should return the encoded image as a CSS background rule" do
-        @img_rocket.as_css_background.should eq("background: url(#{@img_rocket.encode}) no-repeat;")
+        @img_png.as_css_background.should eq("background: url(#{@img_png.encode}) no-repeat;")
       end
     end
 
@@ -58,13 +58,13 @@ describe ImageFile do
       it "should return the base64 string wrapped in proper CSS format" do
         prefix = "data:image/png;base64,"
         suffix = ""
-        @img_rocket.encode.should eq(prefix + @img_rocket.raw_encode + suffix)
+        @img_png.encode.should eq(prefix + @img_png.raw_encode + suffix)
       end
     end
 
     describe "#raw_encode" do
       it "should properly encode the file" do
-        @img_rocket.raw_encode.should eq("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAACIlBMVEUAAAASERMUExQXFhYmJSgnJilhYGZ9AABCQEWLAAAuLC87OT3D2voeHR4mIiOdRQAmISLnYgBgAgKDAACAAACMAAB7AQCBAAAFBAU2NTk/PkI3NToAAAAzMTVVU1h1dHyMjJVqaXA+PEEAAAAwLjFQTlN9e4OpqbJ/fYY8Oj8aGRs5NztlZGpraXAaGRs8Oj50c3qOi5VTUVd8AAB8AABeAAA8LzJ0dHxubHM6ODyHAACUAACPAABQT1R+AACVAACnAABgZG4zMTSAAACOAACTAABqdII9PkV+AAByAABuBwBWNTRqdYRAREsUDAiRQwC3SAGSSzlANjsUEhCxZwDYaQFdAACJTgDGlQBiMR1PKypjEBGPAACjagDUsQCxaQC7SQFwCgB5AACfZwC/lgDSsQDGlgC0ZwCVQQByAACOAACWAACVXQCfZwCMTgCAAACAAADJydPFxM+fnqe/v8na2uXa2eSwrbm0tb9zdHhWVliKiY/CwMzDxdKrrbhRUVFlZWRNTU6al6FbEBFnYmi4usbJzNm7u8hoaGtKSkpcW1+BgYyGAQFZPUGipK/Dw9DItMDGws+trLeNi5OMjptiEBF2dHy4tcHXbXS+MTWwo66qqLOXmqeXipPcVFm8Bwd0OT2cmqSSlKLVMTbAAgJnIyZzcXmFiJRjZHDpHQi+AABdEhVUUFVlYmlaP0RbERLvWwB1GQOGAgLjmwCiWgCnAABpx48CAAAAcXRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFTATAh9cnc7SMQEnh9n7zRYIZNudCYT2+1sVYGmU9tgfFKH9hxqk/toocbvY9mULBzLZ+IUICoTylAlc9msNtfHZ/vwt4faFMhRG5OK1WwoIuqQaRQ1yG1EyGzIAAACzSURBVBgZRcExSgNhEIbh752d2d+NBxCsrARBBAuvkIhYCtp7Km8gAYONqawUscwBgqZPCkURxMrZzUKeB22wQ1LPdllTp9ojnTHF1fJ9GJHiw5XiAE5JD7F0lUPSkFbBvDmGEb14HvgJnNO7i+0fD2hYG9cvJouIaencl2Lfstd64+lLcgsu6PjjpyQfcvVXbuFy/I6S1XU1mJSyrBZHKHFNbzZfKVnT/G7dTBYRbyu1/gH1JiFHBs2I5wAAAABJRU5ErkJggg==")
+        @img_png.raw_encode.should eq("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAACIlBMVEUAAAASERMUExQXFhYmJSgnJilhYGZ9AABCQEWLAAAuLC87OT3D2voeHR4mIiOdRQAmISLnYgBgAgKDAACAAACMAAB7AQCBAAAFBAU2NTk/PkI3NToAAAAzMTVVU1h1dHyMjJVqaXA+PEEAAAAwLjFQTlN9e4OpqbJ/fYY8Oj8aGRs5NztlZGpraXAaGRs8Oj50c3qOi5VTUVd8AAB8AABeAAA8LzJ0dHxubHM6ODyHAACUAACPAABQT1R+AACVAACnAABgZG4zMTSAAACOAACTAABqdII9PkV+AAByAABuBwBWNTRqdYRAREsUDAiRQwC3SAGSSzlANjsUEhCxZwDYaQFdAACJTgDGlQBiMR1PKypjEBGPAACjagDUsQCxaQC7SQFwCgB5AACfZwC/lgDSsQDGlgC0ZwCVQQByAACOAACWAACVXQCfZwCMTgCAAACAAADJydPFxM+fnqe/v8na2uXa2eSwrbm0tb9zdHhWVliKiY/CwMzDxdKrrbhRUVFlZWRNTU6al6FbEBFnYmi4usbJzNm7u8hoaGtKSkpcW1+BgYyGAQFZPUGipK/Dw9DItMDGws+trLeNi5OMjptiEBF2dHy4tcHXbXS+MTWwo66qqLOXmqeXipPcVFm8Bwd0OT2cmqSSlKLVMTbAAgJnIyZzcXmFiJRjZHDpHQi+AABdEhVUUFVlYmlaP0RbERLvWwB1GQOGAgLjmwCiWgCnAABpx48CAAAAcXRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFTATAh9cnc7SMQEnh9n7zRYIZNudCYT2+1sVYGmU9tgfFKH9hxqk/toocbvY9mULBzLZ+IUICoTylAlc9msNtfHZ/vwt4faFMhRG5OK1WwoIuqQaRQ1yG1EyGzIAAACzSURBVBgZRcExSgNhEIbh752d2d+NBxCsrARBBAuvkIhYCtp7Km8gAYONqawUscwBgqZPCkURxMrZzUKeB22wQ1LPdllTp9ojnTHF1fJ9GJHiw5XiAE5JD7F0lUPSkFbBvDmGEb14HvgJnNO7i+0fD2hYG9cvJouIaencl2Lfstd64+lLcgsu6PjjpyQfcvVXbuFy/I6S1XU1mJSyrBZHKHFNbzZfKVnT/G7dTBYRbyu1/gH1JiFHBs2I5wAAAABJRU5ErkJggg==")
       end
       it "should raise an error if file is above 32KB"
     end
