@@ -2,6 +2,8 @@
 
 # CSSquirt
 
+[![Build Status](https://travis-ci.org/mroth/cssquirt.png?branch=master)](https://travis-ci.org/mroth/cssquirt)
+
 Embeds images (or directories of images) directly into CSS via the Data URI scheme.
 
 This technique is commonly used to reduce HTTP requests as an easier alternative to CSS sprite sheets.
