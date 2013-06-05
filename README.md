@@ -42,7 +42,7 @@ Example from an IRB session:
     => "background: url(data:image/gif;base64,R0lGODlhNQAmAKL/AP///wC1/wghSsDAwAAAAAAAAAAAAAAAACH5BAEAAAMALAAAAAA1ACYAAAP4OLrc/jDKSau9lRDMOwlbJ1IfOJ6QFphoqwgl657wumozg1vxre2tDzDSs4F8QVuIaFQah50aaOlQNa3K3e8ikE6rxduVAPgBztRJNwbEjp/kcxmdVnun4edVXo5DKXdNgmJPfBpydSSDi4RZhj8CHoyLYYd9BF2RHGx5V4M/QpginJ1OkzcDfxMlmDClU5SgrBhCmWuTlbJXF7Uvt43AP7g8IJoLv0WkjBrGq60Oa26wR8vPFZkQv57UgpDNdhKBpt3MXTkLnbmt5ucKpLKytu06N7Zstuzz6MX4tfL69Kz5YgaQSL5jBwsywPYgocJjDyNKnEiRQQIAO3x6ChocsO0CwoUUFEKcSLGiRQ8RAAA7) no-repeat;"
 
     >> puts myImg.as_css_background_with_class
-      .example {
+      .example_gif {
         background: url(data:image/gif;base64,R0lGODlhNQAmAKL/AP///wC1/wghSsDAwAAAAAAAAAAAAAAAACH5BAEAAAMALAAAAAA1ACYAAAP4OLrc/jDKSau9lRDMOwlbJ1IfOJ6QFphoqwgl657wumozg1vxre2tDzDSs4F8QVuIaFQah50aaOlQNa3K3e8ikE6rxduVAPgBztRJNwbEjp/kcxmdVnun4edVXo5DKXdNgmJPfBpydSSDi4RZhj8CHoyLYYd9BF2RHGx5V4M/QpginJ1OkzcDfxMlmDClU5SgrBhCmWuTlbJXF7Uvt43AP7g8IJoLv0WkjBrGq60Oa26wR8vPFZkQv57UgpDNdhKBpt3MXTkLnbmt5ucKpLKytu06N7Zstuzz6MX4tfL69Kz5YgaQSL5jBwsywPYgocJjDyNKnEiRQQIAO3x6ChocsO0CwoUUFEKcSLGiRQ8RAAA7) no-repeat;
       }
     => nil

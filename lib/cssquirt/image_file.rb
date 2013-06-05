@@ -56,10 +56,8 @@ module CSSquirt
     #
     # Returns the class wrapped CSS background rule as a String.
     def as_css_background_with_class(klass=nil)
-      klass=File.basename(@file_path, ".*") unless klass
-      ".#{klass} {
-        #{self.as_css_background}
-      }"
+      klass=File.basename(@file_path).tr('.','_') unless klass
+      ".#{klass} {\n  #{self.as_css_background}\n}"
     end
 
     # Public: Formats a CSS background image rule for the file.
