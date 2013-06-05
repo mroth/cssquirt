@@ -17,9 +17,6 @@ describe ImageFile do
     end
   end
 
-#TODO: handle files other than pngs!!!!
-
-
   context "instance methods" do
     before(:all) do
       @img_png = ImageFile.new 'spec/samples/16px_rocket.png'
@@ -64,9 +61,10 @@ describe ImageFile do
 
     describe "#encode" do
       it "should return the base64 string wrapped in proper CSS format" do
-        prefix = "data:image/png;base64,"
-        suffix = ""
-        @img_png.encode.should eq(prefix + @img_png.raw_encode + suffix)
+        png_prefix = "data:image/png;base64,"
+        @img_png.encode.should eq(png_prefix + @img_png.raw_encode)
+        svg_prefix = "data:image/svg+xml;base64,"
+        @img_svg.encode.should eq(svg_prefix + @img_svg.raw_encode)
       end
     end
 
