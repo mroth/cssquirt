@@ -10,7 +10,7 @@ Some notes/caveats for using this technique:
  - Be sure your web server is configured to gzip your HTML/CSS content, and any size overhead should disapear.
  - The maximum size supported is 32KB per image.
 
-For more information see (this article)[#].
+For more information see [this article](#).
 
 ## Installation
 
@@ -56,7 +56,7 @@ Example from an IRB session:
     => nil
 
 #### Working on groups of files
-Use `CSSquirt::FileList` which just extends the goodness of a Rake::FileList and adds some batch processing.  The batch processing is smart enough to report errors to you on specific files via `STDERR` but will just omit those files from the final output.
+Use `CSSquirt::ImageFileList` which just extends the goodness of a [`Rake::FileList`](http://rake.rubyforge.org/classes/Rake/FileList.html) and adds some batch processing.  The batch processing is smart enough to report errors to you on specific files via `STDERR` but will just omit those files from the final output.
 
     >> filez=CSSquirt::ImageFileList.new('samples/*')
     => ["samples/16px_rocket.png", "samples/64px_bomb.png", "samples/example.gif", "samples/example.jpg", "samples/example.mp3", "samples/example.svg", "samples/toobig.gif"]
