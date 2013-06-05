@@ -59,7 +59,7 @@ module CSSquirt
     #
     # Returns the Base64 encoded String with filetype information embedded.
     def encode()
-      "data:image/png;base64," + self.raw_encode
+      "data:#{self.filetype};base64," + self.raw_encode
     end
 
     # Public: file into its raw Base64 string representation.
