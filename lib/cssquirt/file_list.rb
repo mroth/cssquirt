@@ -11,9 +11,14 @@ module CSSquirt
     #
     # Returns a CSS document as a String.
     def to_css(prefix=nil, header=true)
+      css_classes = self.zip(self.to_images).map do |item|
+        item_filelist,item_imagefile = item[0],item[1]
+        item_imagefile.as_css_background_with_class( prefix + "-#{item_filelist.pathmap('%n')}" )
+      end
+
       header_msg = "/* Generated with CSSquirt! (http://github.com/mroth/cssquirt/) */\n"
-      header_msg = nil if header == false
-      header_msg + self.to_images.map { |img| img.as_css_background_with_class(prefix) }.join("\n")
+      header_msg = '' if header == false
+      header_msg + css_classes.join("\n")
     end
 
     # Public: map the filelist to ImageFiles, handling any errors.
