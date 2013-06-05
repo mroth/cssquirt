@@ -48,9 +48,23 @@ module CSSquirt
       "<img src='#{self.encode}' />"
     end
 
+    # Public: Formats a CSS background image rule for the file, and wraps
+    #   it in a class definition.
+    #
+    # klass - The name of the class to use for the CSS rule. Optional. If
+    #         ommitted, the default will the basename of the file path.
+    #
+    # Returns the class wrapped CSS background rule as a String.
+    def as_css_background_with_class(klass=nil)
+      klass=File.basename(@file_path, ".*") unless klass
+      ".#{klass} {
+        #{self.as_css_background}
+      }"
+    end
+
     # Public: Formats a CSS background image rule for the file.
     #
-    # Returns the the CSS background rule as a String.
+    # Returns the CSS background rule as a String.
     def as_css_background()
       "background: url(#{self.encode}) no-repeat;"
     end

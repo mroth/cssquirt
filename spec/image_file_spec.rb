@@ -48,9 +48,20 @@ describe ImageFile do
     end
 
     describe "#as_css_background_with_class" do
-      it "should return the encoded image as a full CSS rule"
-      it "should use the filename base as the default class name"
-      it "should use an optional class name if passed one"
+      it "should return the encoded image as a full CSS rule" do
+        @img_gif.as_css_background_with_class().should
+          match(/^\.\w \{\n(.*)\n\}/)
+      end
+      it "should use the filename base as the default class name" do
+        @img_gif.as_css_background_with_class().should
+          match(/^\.example \{/)
+      end
+      it "should use an optional class name if passed one" do
+        @img_gif.as_css_background_with_class('funkytown').should
+          match(/^\.funkytown \{/)
+      end
+      it "should modify invalid filenames to be valid CSS class names"
+      it "should raise an error if sent an invalid CSS class name"
     end
 
     describe "#as_css_background" do
