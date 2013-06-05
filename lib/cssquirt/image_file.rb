@@ -2,6 +2,9 @@ module CSSquirt
   class ImageFile
     require "base64"
 
+    MAX_FILE_SIZE = 32768
+    VALID_FILE_MIMETYPES = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml']
+
     # Public: Intialize a new ImageFile object.
     #
     # file_path - A String representing the relative path to an image file.
@@ -13,6 +16,15 @@ module CSSquirt
     def initialize(file_path)
       @file_path = file_path
       raise IOError, "No file found at path #{file_path}" unless File.exist? file_path
+
+      unless self.valid_image_format?
+        raise TypeError, "File type #{self.filetype} not a supported image format"
+      end
+
+      file_size = File.size(@file_path)
+      if file_size > MAX_FILE_SIZE
+        raise RangeError, "File is too big - #{file_size} greater than #{MAX_FILE_SIZE}"
+      end
     end
 
     # Public: Returns the MIME type for the file.
@@ -55,6 +67,14 @@ module CSSquirt
     # Returns the Base64 encoded String.
     def raw_encode()
       Base64.strict_encode64(File.read @file_path)
+    end
+
+    protected
+    # Protected: is the file of an image format we support?
+    #
+    # Returns a Boolean representing image format validity.
+    def valid_image_format?
+      VALID_FILE_MIMETYPES.include? self.filetype
     end
   end
 end
