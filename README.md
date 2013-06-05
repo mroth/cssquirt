@@ -1,4 +1,6 @@
-# Cssquirt
+# CURRENTLY IN EARLY DEVELOPMENT, NOT AVAILABLE VIA RUBYGEMS YET!
+
+# CSSquirt
 
 Embeds images (or directories of images) directly into CSS via the Data URI scheme.
 
