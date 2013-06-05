@@ -3,8 +3,6 @@ require "cssquirt/image_file"
 
 module CSSquirt
   class CSSquirter
-    # def initialize
-    # end
 
     # Publc: Makes a image file into an embedded img tag
     def self.as_img_tag(file_path)
