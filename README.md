@@ -1,7 +1,6 @@
-# CURRENTLY IN EARLY DEVELOPMENT, NOT AVAILABLE VIA RUBYGEMS YET!
-
 # CSSquirt
 
+[![Gem Version](https://badge.fury.io/rb/cssquirt.png)](http://badge.fury.io/rb/cssquirt)
 [![Build Status](https://travis-ci.org/mroth/cssquirt.png?branch=master)](https://travis-ci.org/mroth/cssquirt)
 
 Embeds images (or directories of images) directly into CSS via the Data URI scheme.
