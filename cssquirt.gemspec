@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = CSSquirt::VERSION
   spec.authors       = ["Matthew Rothenberg"]
   spec.email         = ["mrothenberg@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Embeds images (or directories of images) directly into CSS via the Data URI scheme.}
+  spec.summary       = %q{Embeds images (or directories of images) directly into CSS via the Data URI scheme.}
+  spec.homepage      = "http://github.com/mroth/cssquirt"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
