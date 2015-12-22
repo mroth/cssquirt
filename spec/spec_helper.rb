@@ -5,6 +5,7 @@ include CSSquirt
 RSpec.configure do |config|
   config.color         = true
   config.formatter     = 'documentation'
+  config.expect_with(:rspec) { |c| c.syntax = :should }
 
   config.before(:all) { silence_output }
   config.after(:all)  { enable_output }
